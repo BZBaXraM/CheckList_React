@@ -6,7 +6,6 @@ import TaskDetails from './Components/TaskDetails/TaskDetails';
 import TaskEdit from './Components/TaskEdit/TaskEdit';
 import Form from './Components/Form/Form';
 
-
 const updater = (state, action) => {
     switch (action.type) {
         case 'addTask':
@@ -46,26 +45,13 @@ const App = () => {
                         <Link to="/uncompleted">Uncompleted</Link>
                     </div>
                     <Routes>
-                        <Route
-                            path="/"
-                            element={<Checklist tasks={tasks} onDelete={deleteTask}/>}
-                        />
-                        <Route
-                            path="/:taskId"
-                            element={<TaskDetails tasks={tasks}/>}
-                        />
-                        <Route
-                            path="/:taskId/edit"
-                            element={<TaskEdit tasks={tasks} onEdit={editTask}/>}
-                        />
-                        <Route
-                            path="/completed"
-                            element={<Checklist tasks={tasks.filter(task => task.completed)} onDelete={deleteTask}/>}
-                        />
-                        <Route
-                            path="/uncompleted"
-                            element={<Checklist tasks={tasks.filter(task => !task.completed)} onDelete={deleteTask}/>}
-                        />
+                        <Route path="/" element={<Checklist tasks={tasks} onDelete={deleteTask} onEdit={editTask}/>}/>
+                        <Route path="/:taskId" element={<TaskDetails tasks={tasks}/>}/>
+                        <Route path="/:taskId/edit" element={<TaskEdit tasks={tasks} onEdit={editTask}/>}/>
+                        <Route path="/completed" element={<Checklist tasks={tasks.filter(task => task.completed)}
+                                                                     onDelete={deleteTask}/>}/>
+                        <Route path="/uncompleted" element={<Checklist tasks={tasks.filter(task => !task.completed)}
+                                                                       onDelete={deleteTask}/>}/>
                     </Routes>
                 </div>
                 <div className="right-panel">

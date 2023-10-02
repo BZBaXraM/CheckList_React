@@ -1,9 +1,9 @@
 import React from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
 const TaskDetails = ({tasks}) => {
     const {taskId} = useParams();
-    const task = tasks.find(task => task.id === taskId);
+    const task = tasks.find(task => task.id === parseInt(taskId));
 
     if (!task) {
         return <div>Task not found</div>;
@@ -13,7 +13,6 @@ const TaskDetails = ({tasks}) => {
         <div>
             <h2>{task.title}</h2>
             <p>{task.description}</p>
-            <Link to={`/${task.id}/edit`}>Edit Task</Link>
         </div>
     );
 };
