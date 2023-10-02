@@ -1,0 +1,14 @@
+button {
+    padding: 8px 16px;
+    background-color: gray;
+
+    &:hover {
+        background-color: darkgray;
+        cursor: pointer;
+    }
+
+    &:active {
+        background-color: lightgray;
+    }
+}
+
